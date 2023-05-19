@@ -25,7 +25,7 @@ def ponto_minimo(passo, x0, y0, precisao):
         y1 = y - passo * grad_y
 
         # SE a o valor da função no ponto atual menos o ponto anterior for menor que a precisão definida, encontramos o nosso ponto de mínimo
-        if abs(f(x1, y1) - f(x, y)) < precisao or contador > 300:
+        if abs(f(x1, y1) - f(x, y)) < precisao or contador > 200:
             break
 
         # SENÃO, atualizamos os valores de x e y para os valores calculados acima
@@ -33,20 +33,20 @@ def ponto_minimo(passo, x0, y0, precisao):
         y = y1
         contador += 1
 
+        # Analisamos o valor da função no ponto atual e no ponto de mínimo anterior e atualizamos o ponto de mínimo caso necessário
         if f(x1, y1) < f(menorX[0], menorY[0]):
             menorX[0] = x1
             menorY[0] = y1
     
-    print("Valor da função no ponto de mínimo:", f(menorX[0], menorY[0]))
+    print(f"Valor da função no ponto de mínimo com passo {passo} :", f(menorX[0], menorY[0]))
 
     # Retornamos o ponto de mínimo
     return menorX[0], menorY[0]
 
 
-# COLOQUE O PASSO DESEJADO AQUI: ex: 0.2
-ponto_minimo = ponto_minimo(0.2, 0, 0, 1e-5)
-print("Ponto de mínimo:", ponto_minimo)
-
-
-
+# COLOQUE O PASSO DESEJADO NA ENTRADA DA FUNÇÃO
+ponto_minimo_03 = ponto_minimo(0.3, 0, 0, 1e-5)
+print("Ponto de mínimo com passo 0.3:", ponto_minimo_03)
+ponto_minimo_05 = ponto_minimo(0.5, 0, 0, 1e-5)
+print("Ponto de mínimo com passo 0.5:", ponto_minimo_05)
 
